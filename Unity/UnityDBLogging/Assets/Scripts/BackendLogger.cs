@@ -19,12 +19,26 @@ public class BackendLogger : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log(BACKEND_ADDRESS_BASE);
-        user_id = System.Guid.NewGuid().ToString();
+        user_id = GetOrCreateUserId();
         if (instance == null)
         {
             instance = this;
         }
+    }
+
+    private string GetOrCreateUserId()
+    {
+        string userId = PlayerPrefs.GetString("UserId");
+
+        // If no player ID found, generate a new one
+        if (string.IsNullOrEmpty(userId))
+        {
+            userId = System.Guid.NewGuid().ToString();
+            PlayerPrefs.SetString("UserId", userId);
+            PlayerPrefs.Save();
+        }
+
+        return userId;
     }
 
     public void MarkGameEnd(float game_score, float game_time)
