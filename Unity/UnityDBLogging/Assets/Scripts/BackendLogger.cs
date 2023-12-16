@@ -9,7 +9,7 @@ public class BackendLogger : MonoBehaviour
     public static BackendLogger instance;
 
     // When you host, change this to your actual URL
-    private const string BACKEND_ADDRESS_BASE = "http://127.0.0.1:8000/unity_post_";
+    private const string BACKEND_ADDRESS_BASE = "cairo-exp-relyk3.pythonanywhere.com/unity_post_";
 
     // A UUID to represent unique user session
     private string user_id;
