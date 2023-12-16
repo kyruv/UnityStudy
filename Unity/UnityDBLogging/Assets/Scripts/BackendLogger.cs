@@ -8,13 +8,18 @@ public class BackendLogger : MonoBehaviour
 {
     public static BackendLogger instance;
 
+#if UNITY_EDITOR
+    private const string BACKEND_ADDRESS_BASE = "http://127.0.0.1:8000/unity_post_";
+#else
     private const string BACKEND_ADDRESS_BASE = "unity_post_";
+#endif
 
     // A UUID to represent unique user session
     private string user_id;
 
     void Awake()
     {
+        Debug.Log(BACKEND_ADDRESS_BASE);
         user_id = System.Guid.NewGuid().ToString();
         if (instance == null)
         {
