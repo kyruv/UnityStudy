@@ -1,5 +1,5 @@
 from django.db import models
-from app.models import User
+from example_app.models import User
 
 def get_user(user_id):
     try:
