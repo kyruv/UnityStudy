@@ -24,6 +24,7 @@ public class BackendLogger : MonoBehaviour
         {
             instance = this;
         }
+        Application.ExternalCall("start_survey_one", "hello from unity!");
     }
 
     private string GetOrCreateUserId()
