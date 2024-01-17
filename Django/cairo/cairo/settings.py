@@ -35,11 +35,12 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["cairo-exp-relyk3.pythonanywhere.com", "127.0.0.1"]
 
+SECURE_SSL_REDIRECT = not DEBUG
 
 # Application definition
 
 INSTALLED_APPS = [
-    'app.apps.MyAppConfig',
+    'example_app.apps.MyAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'cairo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'app/unity_build')],
+        'DIRS': [os.path.join(BASE_DIR, 'example_app/static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,7 +128,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(os.path.join(os.path.join(BASE_DIR, 'app'), 'unity_build'),'static')
+    os.path.join(os.path.join(BASE_DIR, 'example_app'),'static')
 ]
 
 if not DEBUG:

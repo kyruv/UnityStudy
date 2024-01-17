@@ -2,11 +2,11 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.shortcuts import render
-from app.db_update import save_game_data, save_s1_data, save_s2_data
+from example_app.db_update import save_game_data, save_s1_data, save_s2_data
 
 
 def index(request):
-    
+    print(request)
     return render(request, 'index.html')
 
 # The below are called by Unity using POST messages in BackendLogger.cs

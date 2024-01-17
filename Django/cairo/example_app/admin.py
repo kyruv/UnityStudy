@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import User
+from example_app.models import User
 from import_export.admin import ExportActionMixin
 
 class MyAdmin(ExportActionMixin, admin.ModelAdmin):
