@@ -32,4 +32,12 @@ def save_s2_data(user_id, s2_q1):
 
     user.save()
 
+def save_surveyjs(user_id, s1_q1, s1_q2):
+    user = get_user(user_id)
+
+    user.survey_name = s1_q1
+    user.survey_color = s1_q2
+
+    user.save()
+
     

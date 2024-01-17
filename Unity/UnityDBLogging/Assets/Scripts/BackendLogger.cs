@@ -24,6 +24,9 @@ public class BackendLogger : MonoBehaviour
         {
             instance = this;
         }
+#if !UNITY_EDITOR && UNITY_WEBGL
+        WebGLInput.captureAllKeyboardInput = false;
+#endif
         Application.ExternalCall("start_survey_one", "hello from unity!");
     }
 

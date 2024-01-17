@@ -21,6 +21,10 @@ class User(models.Model):
 
     # survey#2 data
     s2_q1 = models.IntegerField(blank=True, null=True)
+
+    # surveyjs data
+    survey_name = models.CharField(blank=True, null=True, max_length=25)
+    survey_color = models.CharField(blank=True, null=True, max_length=10)
     
 
 
