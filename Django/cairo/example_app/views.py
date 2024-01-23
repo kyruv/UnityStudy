@@ -24,7 +24,16 @@ def unity_callback_game_end(request):
     
     db_entry, _ = FlappyBirdStudyResult.objects.get_or_create(user_id=user_id)
 
-    if 'game' in db_entry.game_data:
+    print(db_entry.game_data)
+
+    if db_entry.game_data is None:
+        db_entry.game_data = {
+            'game': [{
+                'clicks': num_clicks,
+                'progess': game_progress
+            }]
+        }
+    else:
         existing_data = list(db_entry.game_data['game'])
         existing_data.append({
                 'clicks': num_clicks,
@@ -33,13 +42,7 @@ def unity_callback_game_end(request):
         db_entry.game_data = {
             'game': existing_data
         }
-    else:
-        db_entry.game_data = {
-            'game': [{
-                'clicks': num_clicks,
-                'progess': game_progress
-            }]
-        }
+    
     
     db_entry.save()
 
