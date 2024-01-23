@@ -1,12 +1,12 @@
-function post_click_survey(user_id) {
-
-    // Survey JSON
-    var surveyJSON = {
-        title: "Thanks for completing the first round of the game. Complete this survey to continue to the final .",
+function pre_game_survey(user_id) {
+    var preGameSurvey = {
+        title: "Complete this survey to continue to the game.",
         pages: [
             {
                 questions: [
-                    { type: "text", name: "opinion", title: "Did you like the game?" },
+                    { type: "text", name: "name", title: "Enter your name:" },
+                    { type: "text", name: "prolific_id", title: "Enter your prolific id:" },
+                    { type: "radiogroup", name: "color", title: "Select your favorite color:", choices: ["Red", "Blue", "Green"] }
                 ]
             }
         ]
@@ -18,19 +18,20 @@ function post_click_survey(user_id) {
         disable_unity();
 
         // Initialize Survey
-        var survey = new Survey.Model(surveyJSON);
+        var survey = new Survey.Model(preGameSurvey);
 
         // Access Survey Responses
         survey.onComplete.add(function (result) {
+            console.log(result.data);
+
             enable_unity();
             var surveyContainer = document.getElementById("survey");
             surveyContainer.innerHTML = "";
             var newDataCopy = Object.assign({}, result.data);
             // Add user_id to the new dictionary
             newDataCopy["user_id"] = user_id;
-            console.log(newDataCopy);
 
-            fetch(midGameSurveyUrl, {
+            fetch(preGameSurveyUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

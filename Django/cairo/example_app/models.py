@@ -1,30 +1,31 @@
 from django.db import models
 
 # This sets up the database - you are welcome to make this much 
-# more modularized and custom. I opt to just stick all the 
-# necessary data for a user into one large table with lots of columns.
+# more modularized and custom. I opt to stick the game data in a
+# json and all the survey answers in their own top level field.
 
-class User(models.Model):
+class FlappyBirdStudyResult(models.Model):
     readonly_fields =['created_at', 'updated_at']
 
     user_id = models.CharField(max_length=200, primary_key=True)
+    prolific_id = models.CharField(blank=True, null=True, max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # game data
-    game_score = models.FloatField(blank=True, null=True)
-    game_time = models.FloatField(blank=True, null=True)
+    # If there is a variable amount of data to be stored, JSONField is a good choice
+    # If there isn't, using multiple primative fields is better
+    game_data = models.JSONField(blank=True, null=True)
 
     # survey data
-    s1_q1 = models.CharField(blank=True, null=True, max_length=10)
-    s1_q2 = models.IntegerField(blank=True, null=True)
+    s1_name = models.CharField(blank=True, null=True, max_length=100)
+    s1_color = models.CharField(blank=True, null=True, max_length=25)
 
-    # survey#2 data
-    s2_q1 = models.IntegerField(blank=True, null=True)
+    s2_opinion = models.CharField(blank=True, null=True, max_length=1000)
 
-    # surveyjs data
-    survey_name = models.CharField(blank=True, null=True, max_length=25)
-    survey_color = models.CharField(blank=True, null=True, max_length=10)
+    s3_preference = models.CharField(blank=True, null=True, max_length=25)
+
+
+
     
 
 

@@ -4,8 +4,8 @@ from . import views
 
 urlpatterns = [
     path("example_app", views.index, name="index"),
-    path("survey_one_data", views.survey_one_data, name="survey_one_data"),
-    path("unity_post_game_end", views.unity_callback_game_end, name="unity_callback_game_end"),
-    path("unity_post_s1_end", views.unity_callback_s1_end, name="unity_callback_s1_end"),
-    path("unity_post_s2_end", views.unity_callback_s2_end, name="unity_callback_s2_end")
+    path("unity_flappy_bird_player_died", views.unity_callback_game_end, name="unity_callback_game_end"),
+    path("pre_game_survey_data", views.pre_game_survey_data, name="pre_game_survey_data"),
+    path("mid_game_survey_data", views.mid_game_survey_data, name="mid_game_survey_data"),
+    path("post_game_survey_data", views.post_game_survey_data, name="post_game_survey_data"),
 ]
