@@ -27,7 +27,7 @@ function post_space_survey(user_id) {
             // Add user_id to the new dictionary
             newDataCopy["user_id"] = user_id;
 
-            fetch(preGameSurveyUrl, {
+            fetch(postGameSurvey, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

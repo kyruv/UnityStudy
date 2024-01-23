@@ -13,7 +13,7 @@ def index(request):
 
 @csrf_exempt
 def unity_callback_game_end(request):
-    print(request.POST)
+    print("Unity game end callback")
 
     user_id = request.POST["user_id"]  
     attempt_number = int(request.POST["attempt_number"])
@@ -23,8 +23,6 @@ def unity_callback_game_end(request):
     print(f"user_id: {user_id}, attempt: {attempt_number}, game_progress: {game_progress}, num_clicks: {num_clicks}")
     
     db_entry, _ = FlappyBirdStudyResult.objects.get_or_create(user_id=user_id)
-
-    print(db_entry.game_data)
 
     if db_entry.game_data is None:
         db_entry.game_data = {
@@ -50,6 +48,7 @@ def unity_callback_game_end(request):
 
 @csrf_exempt
 def pre_game_survey_data(request):
+    print("pre game survey callback")
     json_data = json.loads(request.body.decode('utf-8'))
     user_id = json_data.get('user_id')
 
@@ -64,6 +63,7 @@ def pre_game_survey_data(request):
 
 @csrf_exempt
 def mid_game_survey_data(request):
+    print("mid game survey callback")
     json_data = json.loads(request.body.decode('utf-8'))
     user_id = json_data.get('user_id')
 
@@ -79,6 +79,7 @@ def mid_game_survey_data(request):
 
 @csrf_exempt
 def post_game_survey_data(request):
+    print("post game survey callback")
     json_data = json.loads(request.body.decode('utf-8'))
     user_id = json_data.get('user_id')
 
