@@ -1,4 +1,4 @@
-https://cairo-exp-relyk3.pythonanywhere.com/
+https://cairo_project-exp-relyk3.pythonanywhere.com/
 
 This project is exploring logging unity information by wrapping the webgl game in a django server and then logging to that server with a POST message. The server then stores in a local sqlite db.
 
