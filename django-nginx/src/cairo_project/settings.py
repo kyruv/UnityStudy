@@ -35,7 +35,7 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["cairo_project-exp-relyk3.pythonanywhere.com", "127.0.0.1"]
 
-SECURE_SSL_REDIRECT = not DEBUG
+SECURE_SSL_REDIRECT = False
 
 # Application definition
 
@@ -125,14 +125,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/var/www/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(os.path.join(BASE_DIR, 'example_app'),'static')
-]
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+)
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#if not DEBUG:
+STATIC_ROOT = '/var/www/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

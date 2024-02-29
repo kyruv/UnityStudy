@@ -7,7 +7,7 @@ from example_app.models import FlappyBirdStudyResult
 
 def index(request):
     print(request)
-    return render(request, 'index.html')
+    return render(request, 'example_app/index.html')
 
 # The below are called by Unity using POST messages in BackendLogger.cs
 

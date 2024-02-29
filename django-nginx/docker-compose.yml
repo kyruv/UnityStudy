@@ -10,16 +10,23 @@ services:
    
    # Mapping machine and container ports
    ports:
-     - 1337:80
+     - 80:80
+     - 443:443
      
    # Storage volumes
    volumes:
-     - static_volume:/home/app/web/staticfiles
-     - media_volume:/home/app/web/mediafiles
+     - static_volume:/var/www/static/:/var/www/static
    depends_on:
      - web
    restart: "on-failure"
-   
+
+ # To handle HTTPS connection certification
+ certbot:
+   image: certbot/certbot:latest
+   volumes:
+     - ./certbot/www/:/var/www/certbot/:rw
+
+
  # Django application
  web:
  
@@ -29,13 +36,12 @@ services:
    # Build commands
    command: sh -c "python manage.py makemigrations --noinput &&
                    python manage.py migrate --noinput &&
-                   
-                   gunicorn cairo_project.wsgi:application --bind 0.0.0.0:8000"
+                   python manage.py collectstatic --clear --noinput &&
+                   gunicorn --config gunicorn_config.py cairo_project.wsgi:application"
                    
    # Storage volumes
    volumes:
-     - static_volume:/home/app/web/staticfiles
-     - media_volume:/home/app/web/mediafiles
+     - static_volume:/var/www/static/:/var/www/static
      
    # Exposing port 8000
    expose: 

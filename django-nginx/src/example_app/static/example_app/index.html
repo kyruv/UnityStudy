@@ -13,7 +13,7 @@
 <body style="text-align: center; padding: 0; border: 0; margin: 0;">
   <canvas id="unity-canvas" width=600 height=960 tabindex="-1"
     style="width: 500px; height: 800px; background: #231F20"></canvas>
-  <script src="static/Build/UnityBuild.loader.js"></script>
+  <script src="static/example_app/Build/UnityBuild.loader.js"></script>
   <script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
   <script src="https://unpkg.com/survey-knockout@1.9.125/survey.ko.min.js"></script>
   <script>
@@ -21,10 +21,11 @@
     var midGameSurveyUrl = "{% url 'mid_game_survey_data' %}";
     var postGameSurveyUrl = "{% url 'post_game_survey_data' %}";
   </script>
-  <script src="static/unity_functions.js"></script>
-  <script src="static/surveyone.js"></script>
-  <script src="static/presurvey.js"></script>
-  <script src="static/postsurvey.js"></script>
+  <script>console.log("tmp empty change")</script>
+  <script src="static/example_app/unity_functions.js}"></script>
+  <script src="static/example_app/surveyone.js"></script>
+  <script src="static/example_app/presurvey.js"></script>
+  <script src="static/example_app/postsurvey.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/survey-knockout/survey.min.css">
   <script>
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -44,9 +45,9 @@
 
     var myGameInstance = null;
     createUnityInstance(document.querySelector("#unity-canvas"), {
-      dataUrl: "static/Build/UnityBuild.data.br",
-      frameworkUrl: "static/Build/UnityBuild.framework.js.br",
-      codeUrl: "static/Build/UnityBuild.wasm.br",
+      dataUrl: "static/example_app/Build/UnityBuild.data.br",
+      frameworkUrl: "static/example_app/Build/UnityBuild.framework.js.br",
+      codeUrl: "static/example_app/Build/UnityBuild.wasm.br",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "DefaultCompany",
       productName: "UnityDBLogging",
