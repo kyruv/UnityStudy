@@ -7,5 +7,5 @@ workers = 4
 worker_connections = 1000
 threads = 4
 
-certfile = "/etc/letsencrypt/live/your_domain.com/fullchain.pem"
-keyfile = "/etc/letsencrypt/live/your_domain.com/privkey.pem"
+certfile = "/etc/letsencrypt/live/cairo-studies.com/fullchain.pem"
+keyfile = "/etc/letsencrypt/live/cairo-studies.com/privkey.pem"
