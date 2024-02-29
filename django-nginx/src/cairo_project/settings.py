@@ -33,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ["cairo_project-exp-relyk3.pythonanywhere.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["cairo_project-exp-relyk3.pythonanywhere.com", "127.0.0.1", "cairo-studies.com"]
 
 SECURE_SSL_REDIRECT = False
 
